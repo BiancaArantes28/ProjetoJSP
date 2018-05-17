@@ -43,15 +43,16 @@
                         <div class="clearfix"></div>
                     </div>
                     <div class="x_content">
-                        <jsp:useBean id="valores" class="beans.Calculo" type="beans.Calculo" scope="page"/>
-                        
-                        CADASTRO DO CLIENTE....
-                        R$ 100,00 = U$ 
-                        <%= valores.ConverterDolar(100.0)%>
-                        <br>
-                        R$ 100,00 = Euros 
-                        <%= valores.ConverterEuro(100.0)%>
-                        
+                        Dados: <br>
+                        Nome:
+                       <%
+                         out.print(session.getAttribute("user"));  
+                       %>
+                       <br>
+                        Peso:
+                        <%
+                         out.print(62);  
+                       %>
 
 
                     </div>
@@ -64,7 +65,7 @@
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                     <div class="x_title">
-                        <h2>Form Design <small>different form elements</small></h2>
+                        <h2>Metas</h2>
                         <ul class="nav navbar-right panel_toolbox">
                             <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                             </li>
@@ -84,58 +85,22 @@
                     </div>
                     <div class="x_content">
                         <br>
-                        <form id="demo-form2" data-parsley-validate="" class="form-horizontal form-label-left" novalidate="">
-
-                            <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">First Name <span class="required">*</span>
-                                </label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input type="text" id="first-name" required="required" class="form-control col-md-7 col-xs-12">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Last Name <span class="required">*</span>
-                                </label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input type="text" id="last-name" name="last-name" required="required" class="form-control col-md-7 col-xs-12">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Middle Name / Initial</label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Gender</label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <div id="gender" class="btn-group" data-toggle="buttons">
-                                        <label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                                            <input type="radio" name="gender" value="male" data-parsley-multiple="gender"> &nbsp; Male &nbsp;
-                                        </label>
-                                        <label class="btn btn-primary" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                                            <input type="radio" name="gender" value="female" data-parsley-multiple="gender"> Female
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Date Of Birth <span class="required">*</span>
-                                </label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input id="birthday" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text">
-                                </div>
-                            </div>
-                            <div class="ln_solid"></div>
-                            <div class="form-group">
-                                <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                                    <button class="btn btn-primary" type="button">Cancel</button>
-                                    <button class="btn btn-primary" type="reset">Reset</button>
-                                    <button type="submit" class="btn btn-success">Submit</button>
-                                </div>
-                            </div>
-
-                        </form>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Tipo de meta</th>
+                                    <th>Objetivo</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Emagrecimento</td>
+                                    <td>Perder 10kg</td>
+                                    <td><i class="fa fa-pencil-square-o"></i><i class="fa fa-trash" aria-hidden="true"></i></td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
 

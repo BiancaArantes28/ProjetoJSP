@@ -41,7 +41,7 @@ public class Logar extends HttpServlet {
 
             HttpSession session = request.getSession();
 
-            if (login.equals("daniel") && senha.equals("1234")) {
+            if (login.equals("grupolegal") && senha.equals("1234")) {
                 response.sendRedirect("cliente.jsp");
                 session.setAttribute("usuario", login);
                 session.setMaxInactiveInterval(60 * 5);

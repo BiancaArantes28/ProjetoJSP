@@ -55,7 +55,7 @@
 
                             </div>
                         </form>
-                        <%session.setAttribute("user", "Daniel");%>
+                        <%session.setAttribute("user", "grupolegal");%>
                     </section>
                 </div>
 

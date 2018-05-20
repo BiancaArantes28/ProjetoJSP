@@ -47,7 +47,7 @@
                   <li><a><i class="fa fa-edit"></i> CADASTRO <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="formpeso.jsp">Peso</a></li>
-                      <li><a href="produto.jsp">Meta</a></li>
+                      <li><a href="formaddmeta.jsp">Meta</a></li>
                     </ul>
                   </li>
                   <li><a href="formulariopeso.jsp"><i class="fa fa-calculator"></i> Calcular IMC </a>

@@ -1,15 +1,4 @@
-<%
-    try {
-
-        String user = (String) session.getAttribute("usuario");
-        if (user == null) {
-            response.sendRedirect("login.jsp");
-        }
-    } catch (NullPointerException e) {
-        response.sendRedirect("login.jsp");
-    }
-
-%>       
+     
 
 <!-- top navigation -->
         <div class="top_nav">

@@ -63,10 +63,10 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
+                                <tr class="display-1">
                                     <td>Emagrer</td>
                                     <td>Perder 10kg</td>
-                                    <td><a href="formeditmeta.jsp"><i class="fa fa-pencil-square-o"></i></a><i class="fa fa-trash" aria-hidden="true"></i></td>
+                                    <td><a href="formeditmeta.jsp"><i class="fa fa-pencil-square-o"></i></a><i class="fa fa-trash excluir-meta" data-meta="1" aria-hidden="true"></i></td>
                                 </tr>
                             </tbody>
                         </table>

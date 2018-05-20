@@ -2,7 +2,7 @@
     try {
 
         String user = (String) session.getAttribute("usuario");
-        if (user.equals("")) {
+        if (user == null) {
             response.sendRedirect("login.jsp");
         }
     } catch (NullPointerException e) {

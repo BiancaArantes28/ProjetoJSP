@@ -11,10 +11,19 @@ package model.bean;
  */
 public class MetaBean {
     
+    private int id;
     private String tipometa;
     private String objetivo;
     private String DataIni;
     private String DataFim;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getTipometa() {
         return this.tipometa;

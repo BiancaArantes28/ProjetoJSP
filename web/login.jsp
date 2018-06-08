@@ -22,7 +22,7 @@
                 <div class="animate form login_form">
                     <section class="login_content">
                         <form action="./Logar" method="post">
-                            <h1>Login do SISTEMA</h1>
+                            <h1>Teste</h1>
                             <div>
                                 <input type="text" name="user" id="user" class="form-control" placeholder="Usuário" required="" />
                             </div>

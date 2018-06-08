@@ -15,7 +15,8 @@
                     <div class="clearfix"></div>
                 </div>
                 <div class="x_content">
-                    <form action="" method="post">
+                    <form action="./Meta" method="post">
+                        <input type="hidden" name="funcao" id="funcao" value="cadastrarmeta" />
                         <div class="row">
                             <div class="col-md-6 col-xs-6">
                                 <label>Tipo de meta</label>
@@ -24,7 +25,7 @@
                                 <select name="tipo_meta" class="form-control">
                                     <option value="">(Selecione a meta)</option>
                                     <option value="emagrecer">Emagrecer</option>
-                                    <option value="emagrecer">Engordar</option>
+                                    <option value="engordar">Engordar</option>
                                 </select>
                             </div>
                         </div>
@@ -38,7 +39,7 @@
                         </div>
                         <div class="row">
                             <div class="col-md-12 col-xs-12">
-                                <input type="submit" value="Calcular" class="btn btn-primary">
+                                <input type="submit" value="Salvar" class="btn btn-primary">
                             </div>
                         </div>
                     </form>

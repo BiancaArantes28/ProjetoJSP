@@ -13,9 +13,14 @@ public class MetaBean {
     
     private int id;
     private String tipometa;
-    private String objetivo;
+    private float objetivo;
     private String DataIni;
     private String DataFim;
+    
+    public MetaBean(String tipometa, float objetivo){
+        this.tipometa = tipometa;
+        this.objetivo = objetivo;
+    }
 
     public int getId() {
         return id;
@@ -33,11 +38,11 @@ public class MetaBean {
         this.tipometa = tipometa;
     }
 
-    public String getObjetivo() {
+    public float getObjetivo() {
         return this.objetivo;
     }
 
-    public void setObjetivo(String objetivo) {
+    public void setObjetivo(float objetivo) {
         this.objetivo = objetivo;
     }
 

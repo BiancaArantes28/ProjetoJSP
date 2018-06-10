@@ -1,6 +1,7 @@
+
 <%
     try {
-
+        
         String user = (String) session.getAttribute("usuario");
         if (user.equals("")) {
             response.sendRedirect("login.jsp");
@@ -48,8 +49,10 @@
                     <ul class="nav child_menu">
                       <li><a href="formpeso.jsp">Peso</a></li>
                       <li><a href="formaddmeta.jsp">Meta</a></li>
+                      
                     </ul>
                   </li>
+                  <li><a href="Meta?funcao=lista"><i class="fa fa-line-chart"></i>  Lista Metas</a></li>
                   <li><a href="formulariopeso.jsp"><i class="fa fa-calculator"></i> Calcular IMC </a>
                   <li><a href="./Sair"><i class="fa fa-power-off"></i> SAIR </a>
                     

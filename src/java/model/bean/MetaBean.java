@@ -5,6 +5,8 @@
  */
 package model.bean;
 
+import java.sql.Date;
+
 /**
  *
  * @author internet
@@ -14,12 +16,13 @@ public class MetaBean {
     private int id;
     private String tipometa;
     private float objetivo;
-    private String DataIni;
-    private String DataFim;
+    private Date DataIni;
+    private Date DataFim;
     
-    public MetaBean(String tipometa, float objetivo){
+    public MetaBean(String tipometa, float objetivo, Date dataini){
         this.tipometa = tipometa;
         this.objetivo = objetivo;
+        this.DataIni = dataini;
     }
 
     public int getId() {
@@ -46,19 +49,19 @@ public class MetaBean {
         this.objetivo = objetivo;
     }
 
-    public String getDataIni() {
+    public Date getDataIni() {
         return this.DataIni;
     }
 
-    public void setDataIni(String DataIni) {
+    public void setDataIni(Date DataIni) {
         this.DataIni = DataIni;
     }
 
-    public String getDataFim() {
+    public Date getDataFim() {
         return this.DataFim;
     }
 
-    public void setDataFim(String DataFim) {
+    public void setDataFim(Date DataFim) {
         this.DataFim = DataFim;
     }
     

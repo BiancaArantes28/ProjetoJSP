@@ -8,6 +8,7 @@ package Servlets;
 import java.io.IOException;
 import java.io.PrintWriter;
 import static java.lang.System.out;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -17,6 +18,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import model.bean.MetaBean;
+import model.dao.MetaDao;
 
 /**
  *
@@ -42,9 +45,12 @@ public class Logar extends HttpServlet {
             HttpSession session = request.getSession();
 
             if (login.equals("grupolegal") && senha.equals("1234")) {
+                List<MetaBean> listMetas = new MetaDao().buscaMetas();
+                request.setAttribute("listaMetas", listMetas);
                 response.sendRedirect("cliente.jsp");
                 session.setAttribute("usuario", login);
                 session.setMaxInactiveInterval(60 * 5);
+                //request.getRequestDispatcher("/cliente.jsp").forward(request, response);
 
             } else {
                 response.sendRedirect("login.jsp");

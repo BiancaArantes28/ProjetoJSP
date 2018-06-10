@@ -39,15 +39,19 @@ public class Meta extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             String funcao = request.getParameter("funcao");
-            
+            System.out.print(funcao);
             MetaDao meta = new MetaDao();
             SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+            Date data_atual = new Date(System.currentTimeMillis());
             if (funcao.equals("cadastrarmeta")) {
                 String tipometa = request.getParameter("tipo_meta");
                 float peso_meta = Float.parseFloat(request.getParameter("peso_meta"));
                 
-                meta.cadastrar(new MetaBean(tipometa, peso_meta));
+                meta.cadastrar(new MetaBean(tipometa, peso_meta, data_atual));
                 response.sendRedirect("cliente.jsp");
+            }if(funcao.equals("lista")){
+                request.setAttribute("listaMetas", new MetaDao().buscaMetas());
+                request.getRequestDispatcher("/listaMetas.jsp").forward(request, response);
             }
         }
     }

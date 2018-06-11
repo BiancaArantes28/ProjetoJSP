@@ -30,7 +30,27 @@ public class MetaDao {
     public MetaDao(){
         this.con = new ConnectionFactory().getConnection();
     }
-    
+    public boolean alterarMeta(MetaBean meta){
+        boolean retorno;
+        
+        try{
+             
+             String teste = "UPDATE meta " + "SET tipometa = ?, objetivo = ?" + " WHERE id = ?";
+             
+             PreparedStatement update = con.prepareStatement(teste);
+             System.out.print("cai aqui");
+             update.setString(1,meta.getTipometa());
+             update.setFloat(2, meta.getObjetivo());
+             update.setInt(3, meta.getId());
+             update.executeUpdate();
+             update.close();
+             retorno = true;
+        }catch (SQLException ex) {
+            Logger.getLogger(MetaDao.class.getName()).log(Level.SEVERE, null, ex);
+            retorno = false;
+        }
+        return retorno;
+    }
     public void cadastrar(MetaBean meta) {
         Date data_atual = new Date(System.currentTimeMillis());
         String sql = "insert into meta(tipometa,objetivo,dataini) values(?,?,?)";
@@ -41,7 +61,6 @@ public class MetaDao {
             ps.setDate(3, data_atual);
             ps.executeUpdate();
             ps.close();
-            con.close();
         } catch (SQLException ex) {
             Logger.getLogger(MetaDao.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -54,13 +73,13 @@ public class MetaDao {
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while(rs.next()){
-                MetaBean meta = new MetaBean(rs.getString("tipometa"), rs.getFloat("objetivo"), rs.getDate("dataini"));
+                MetaBean meta = new MetaBean(rs.getString("tipometa"), rs.getFloat("objetivo"));
                 meta.setId(rs.getInt("id"));
                 listMeta.add(meta);
             }
             rs.close();
             ps.close();
-            con.close();
+            
         }catch (SQLException ex) {
             Logger.getLogger(MetaDao.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -68,5 +87,25 @@ public class MetaDao {
         return listMeta;
     }
     
+    
+    
+    public MetaBean buscaMetaporId(int id){
+        MetaBean meta = null;
+        try{
+            String sql = "SELECT * FROM meta WHERE id = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                meta = new MetaBean(rs.getString("tipometa"), rs.getFloat("objetivo"));
+                meta.setId(rs.getInt("id"));
+                
+            }
+        }catch (SQLException ex) {
+            Logger.getLogger(MetaDao.class.getName()).log(Level.SEVERE, null, ex);
+            
+        }
+        return meta;
+    }
     
 }

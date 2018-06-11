@@ -4,6 +4,7 @@
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <!-- page content -->
 <div class="right_col" role="main">
+    <div class="message-sucess">${messagem}</div>
     <div class="">
 
         <div class="clearfix"></div>
@@ -32,6 +33,7 @@
                                 <tr>
                                     <th>Tipo</th>
                                     <th>Objetivo</th>
+                                    <th>Ação</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -39,6 +41,7 @@
                                 <tr>
                                     <td>${meta.tipometa}</td>
                                     <td>${meta.objetivo}</td>
+                                    <td><a href='Meta?funcao=editar&id=${meta.id}'>Editar</a></td>
                                 </tr>
                             </c:forEach>
                             </tbody>

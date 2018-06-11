@@ -19,10 +19,9 @@ public class MetaBean {
     private Date DataIni;
     private Date DataFim;
     
-    public MetaBean(String tipometa, float objetivo, Date dataini){
+    public MetaBean(String tipometa, float objetivo){
         this.tipometa = tipometa;
         this.objetivo = objetivo;
-        this.DataIni = dataini;
     }
 
     public int getId() {

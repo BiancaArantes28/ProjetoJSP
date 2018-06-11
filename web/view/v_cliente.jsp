@@ -27,7 +27,7 @@
                     <div class="x_content">
                         Nome:
                        <%
-                         out.print(session.getAttribute("user"));  
+                         out.print(session.getAttribute("usuario"));  
                        %>
                        <br>
                         Peso:

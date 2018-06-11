@@ -20,6 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.bean.MetaBean;
 import model.dao.MetaDao;
+import model.dao.UsuarioDao;
 
 /**
  *
@@ -43,18 +44,16 @@ public class Logar extends HttpServlet {
             String senha = request.getParameter("senha");
 
             HttpSession session = request.getSession();
-
-            if (login.equals("grupolegal") && senha.equals("1234")) {
-                List<MetaBean> listMetas = new MetaDao().buscaMetas();
-                request.setAttribute("listaMetas", listMetas);
+            UsuarioDao usuario = new UsuarioDao();
+            
+            if (usuario.autenticar(login, senha)) {
                 response.sendRedirect("cliente.jsp");
                 session.setAttribute("usuario", login);
                 session.setMaxInactiveInterval(60 * 5);
-                //request.getRequestDispatcher("/cliente.jsp").forward(request, response);
 
             } else {
                 response.sendRedirect("login.jsp");
-                session.setAttribute("usuario", "");
+                session.invalidate();
             }
         } catch (NullPointerException e) {
             response.sendRedirect("login.jsp");

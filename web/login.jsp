@@ -22,7 +22,8 @@
                 <div class="animate form login_form">
                     <section class="login_content">
                         <form action="./Logar" method="post">
-                            <h1>Teste</h1>
+                            <input type="hidden" name="funcao" value="logar">
+                            <h1>Seja Fitness!</h1>
                             <div>
                                 <input type="text" name="user" id="user" class="form-control" placeholder="Usuário" required="" />
                             </div>
@@ -55,7 +56,6 @@
 
                             </div>
                         </form>
-                        <%session.setAttribute("user", "grupolegal");%>
                     </section>
                 </div>
 

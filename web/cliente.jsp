@@ -8,7 +8,7 @@
     <body class="nav-md">
         <div class="container body">
             <div class="main_container">
-                <div class="message-sucess">${messagem}</div>
+                
                 <input type='hidden' name='funcao' value=''>
                 <%@include file="sidebar.jsp"%>
                 <%@include file="topmenu.jsp"%>

@@ -66,6 +66,23 @@ public class MetaDao {
         }
     }
     
+    public boolean excluirMeta(int id){
+        boolean retorno;
+        try{
+            String sql = "DELETE FROM meta WHERE id = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            
+            ps.executeUpdate();
+            ps.close();
+            retorno = true;
+        }catch (SQLException ex) {
+            Logger.getLogger(MetaDao.class.getName()).log(Level.SEVERE, null, ex);
+            retorno = false;
+        }
+        return retorno;
+    }
+    
     public List<MetaBean> buscaMetas(){
         List<MetaBean> listMeta = new ArrayList();
         String sql = "SELECT * FROM meta";

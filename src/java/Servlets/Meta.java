@@ -72,6 +72,22 @@ public class Meta extends HttpServlet {
                 request.setAttribute("meta", new MetaDao().buscaMetaporId(id));
                 request.getRequestDispatcher("/formeditmeta.jsp").forward(request, response);
             }
+            if(funcao.equals("excluir")){
+                int id = Integer.parseInt(request.getParameter("id"));
+                MetaDao metaDao = new MetaDao();
+                boolean resultado = metaDao.excluirMeta(id);
+                
+                if(resultado){
+                    request.setAttribute("messagem","Meta excluída com sucesso!");
+                    
+                    
+                }else{
+                    request.setAttribute("messagem","");
+                    
+                }
+                request.setAttribute("listaMetas", new MetaDao().buscaMetas());
+                request.getRequestDispatcher("/listaMetas.jsp").forward(request, response);
+            }
         
     }
 

@@ -27,7 +27,7 @@
                                 <select name="tipo_meta" class="form-control">
                                     <option value="">(Selecione a meta)</option>
                                     <option value="emagrecer">Emagrecer</option>
-                                    <option value="emagrecer">Engordar</option>
+                                    <option value="engordar">Engordar</option>
                                 </select>
                             </div>
                         </div>

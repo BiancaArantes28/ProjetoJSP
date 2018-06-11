@@ -100,7 +100,7 @@ public class Meta extends HttpServlet {
             }
         if(funcao.equals("alterar")){
             int id = Integer.parseInt(request.getParameter("id"));
-            String tipometa = request.getParameter("tipo_meta");
+            String tipometa = (String)request.getParameter("tipo_meta");
             float pesometa = Float.parseFloat(request.getParameter("peso_meta"));
             
             //MetaBean metaBean = new MetaBean(tipometa, pesometa);
@@ -110,9 +110,17 @@ public class Meta extends HttpServlet {
             metaBean.setTipometa(tipometa);
             metaBean.setObjetivo(pesometa);
             boolean resultado = metaDao.alterarMeta(metaBean);
-            System.out.print(resultado);
+            if(resultado){
+                request.setAttribute("messagem","Meta Editada com sucesso!");
+                request.setAttribute("listaMetas", new MetaDao().buscaMetas());
+                request.getRequestDispatcher("/listaMetas.jsp").forward(request, response);
+            }else{
+                request.setAttribute("messagem","Meta não editada!");
+                request.setAttribute("meta", new MetaDao().buscaMetaporId(id));
+                request.getRequestDispatcher("/formeditmeta.jsp").forward(request, response);
+            }
             
-            request.getRequestDispatcher("cliente.jsp").forward(request, response);
+            //request.getRequestDispatcher("/cliente.jsp").forward(request, response);
         }
     }
 

@@ -101,6 +101,8 @@ public class MetaDao {
                 meta.setId(rs.getInt("id"));
                 
             }
+            rs.close();
+            ps.close();
         }catch (SQLException ex) {
             Logger.getLogger(MetaDao.class.getName()).log(Level.SEVERE, null, ex);
             

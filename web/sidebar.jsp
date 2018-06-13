@@ -29,7 +29,7 @@
                 <a href="cliente.jsp"><span>Welcome,</span>
                 <h2>
                     <%                    
-                        out.print(session.getAttribute("user"));
+                        out.print(session.getAttribute("usuario"));
                     %>
                 </h2></a>
               </div>

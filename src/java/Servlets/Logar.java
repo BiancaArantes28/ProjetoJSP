@@ -19,6 +19,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.bean.MetaBean;
+import model.bean.UsuarioBean;
 import model.dao.MetaDao;
 import model.dao.UsuarioDao;
 
@@ -44,11 +45,12 @@ public class Logar extends HttpServlet {
             String senha = request.getParameter("senha");
 
             HttpSession session = request.getSession();
-            UsuarioDao usuario = new UsuarioDao();
-            
-            if (usuario.autenticar(login, senha)) {
+            // UsuarioDao usuario = new UsuarioDao();
+            UsuarioBean usuario = new UsuarioDao().autenticar(login, senha);
+            if (usuario != null) {
                 response.sendRedirect("cliente.jsp");
-                session.setAttribute("usuario", login);
+                session.setAttribute("usuario", usuario.getNome());
+                session.setAttribute("peso", usuario.getPeso());
                 session.setMaxInactiveInterval(60 * 5);
 
             } else {

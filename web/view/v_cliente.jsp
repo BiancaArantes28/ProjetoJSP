@@ -32,7 +32,7 @@
                        <br>
                         Peso:
                         <%
-                         out.print(62);  
+                         out.print(session.getAttribute("peso"));  
                        %>
 
 

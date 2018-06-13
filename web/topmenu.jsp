@@ -13,7 +13,7 @@
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                     <img src="images/img.jpg" alt="">
                     <%                    
-                        out.print(session.getAttribute("user"));
+                        out.print(session.getAttribute("usuario"));
                     %>
                     <span class=" fa fa-angle-down"></span>
                   </a>

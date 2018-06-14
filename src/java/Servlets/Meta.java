@@ -88,6 +88,11 @@ public class Meta extends HttpServlet {
                 request.setAttribute("listaMetas", new MetaDao().buscaMetas());
                 request.getRequestDispatcher("/listaMetas.jsp").forward(request, response);
             }
+            
+            if(funcao.equals("relatorio")){
+                request.setAttribute("listaMetas", new MetaDao().buscaMetas());
+                request.getRequestDispatcher("/relatorio.jsp").forward(request, response);
+            }
         
     }
 

@@ -11,6 +11,9 @@
     }
 
 %>
+<%@page import="model.bean.MetaBean"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <html>
 	<head>
 		<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -21,12 +24,9 @@
 				tabela.addColumn('string','categorias');
 				tabela.addColumn('number', 'valores');
 				tabela.addRows([
-					['Educação',2000],
-					['Transporte',500],
-					['Lazer',230],
-					['Saúde',50],
-					['Cartão de crédito',900],
-					['Alimentação',260]
+					['NÃ£o concluÃ­da',1],
+					['ConcluÃ­da',1],
+					['Em andamento',4]
 				]);	
 	
 				var grafico = new google.visualization.PieChart(document.getElementById('graficoPizza'));
@@ -38,6 +38,29 @@
 
 	</head>
 	<body>
+        <center><h1>RelatÃ³rios de Metas</h1></center>
+      
+            <table id="data-table" class="display" style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th>Tipo</th>
+                                    <th>Objetivo</th>
+                                    <th>Status</th>
+                                    <th>AÃ§Ã£o</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            <c:forEach items="${listaMetas}" var="meta">
+                                <tr>
+                                    <td>${meta.tipometa}</td>
+                                    <td>${meta.objetivo}</td>
+                                    <td>${meta.status}</td>
+                                    <td><a href='Meta?funcao=editar&id=${meta.id}'>Editar</a> | <a href='Meta?funcao=excluir&id=${meta.id}'>Excluir</a></td>
+                                </tr>
+                            </c:forEach>
+                            </tbody>
+                        </table>
+        <hr>
 		<div id="graficoPizza"></div>
 	</body>
 </html>

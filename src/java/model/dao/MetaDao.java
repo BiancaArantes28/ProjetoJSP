@@ -132,4 +132,27 @@ public class MetaDao {
         return meta;
     }
     
+    public List<MetaBean> buscaMetasPorStatus(String status){
+        List<MetaBean> listMeta = new ArrayList();
+        String sql = "SELECT * FROM meta WHERE status = ?";
+        try{
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, status);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                MetaBean meta = new MetaBean(rs.getString("tipometa"), rs.getFloat("objetivo"));
+                meta.setId(rs.getInt("id"));
+                meta.setStatus(rs.getString("status"));
+                listMeta.add(meta);
+            }
+            rs.close();
+            ps.close();
+            
+        }catch (SQLException ex) {
+            Logger.getLogger(MetaDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        System.out.print(listMeta);
+        return listMeta;
+    }
+    
 }

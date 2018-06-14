@@ -18,10 +18,19 @@ public class MetaBean {
     private float objetivo;
     private Date DataIni;
     private Date DataFim;
+    private String status;
     
     public MetaBean(String tipometa, float objetivo){
         this.tipometa = tipometa;
         this.objetivo = objetivo;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public int getId() {

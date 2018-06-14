@@ -96,6 +96,7 @@ public class MetaDao {
             while(rs.next()){
                 MetaBean meta = new MetaBean(rs.getString("tipometa"), rs.getFloat("objetivo"));
                 meta.setId(rs.getInt("id"));
+                meta.setStatus(rs.getString("status"));
                 listMeta.add(meta);
             }
             rs.close();

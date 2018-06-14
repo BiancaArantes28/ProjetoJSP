@@ -33,6 +33,7 @@
                                 <tr>
                                     <th>Tipo</th>
                                     <th>Objetivo</th>
+                                    <th>Status</th>
                                     <th>Ação</th>
                                 </tr>
                             </thead>
@@ -41,6 +42,7 @@
                                 <tr>
                                     <td>${meta.tipometa}</td>
                                     <td>${meta.objetivo}</td>
+                                    <td>${meta.status}</td>
                                     <td><a href='Meta?funcao=editar&id=${meta.id}'>Editar</a> | <a href='Meta?funcao=excluir&id=${meta.id}'>Excluir</a></td>
                                 </tr>
                             </c:forEach>

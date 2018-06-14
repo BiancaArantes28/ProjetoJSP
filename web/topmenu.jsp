@@ -20,6 +20,7 @@
                     <li><a href="./Sair"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
                   </ul>
                 </li>
+                <li><a href="relatorio.jsp">Relatório</a></li>
 
                 
               </ul>

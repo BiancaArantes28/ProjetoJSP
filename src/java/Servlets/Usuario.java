@@ -5,13 +5,23 @@
  */
 package Servlets;
 
+import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
+import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Date;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.bean.UsuarioBean;
+import model.dao.UsuarioDao;
 
 /**
  *
@@ -29,14 +39,7 @@ public class Usuario extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-           
-        }
-    }
+   
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -50,7 +53,15 @@ public class Usuario extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String funcao = request.getParameter("funcao");
+        
+        switch(funcao){
+            case "editar":
+                int id = Integer.parseInt(request.getParameter("id"));
+                request.setAttribute("user", new UsuarioDao().buscaUsuarioId(id));
+                request.getRequestDispatcher("/formeditusuario.jsp").forward(request, response);
+                
+        }
     }
 
     /**
@@ -64,7 +75,31 @@ public class Usuario extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String funcao = request.getParameter("funcao");
+        
+        switch(funcao){
+            case "alterar":
+                int id = Integer.parseInt(request.getParameter("id"));
+                String nome = (String)request.getParameter("nome");
+                String usuario = (String)request.getParameter("usuario");
+                float peso = Float.parseFloat(request.getParameter("peso"));
+                
+                UsuarioBean usuarioBean = new UsuarioBean();
+                usuarioBean.setId(id);
+                usuarioBean.setNome(nome);
+                usuarioBean.setPeso(peso);
+                usuarioBean.setUsuario(usuario);
+                boolean resultado = new UsuarioDao().alterarUsuario(usuarioBean);
+                System.out.print(resultado);
+                if(resultado){
+                    request.setAttribute("messagem","Usuario Editado com sucesso!");
+                    request.setAttribute("user", usuarioBean);
+                    request.getRequestDispatcher("/cliente.jsp").forward(request, response);
+                }else{
+                    request.setAttribute("messagem","Usuário não editada!");
+                    request.getRequestDispatcher("/formeditusuario.js").forward(request, response);
+                }
+        }
     }
 
     /**

@@ -14,26 +14,36 @@
                     <div class="clearfix"></div>
                 </div>
                 <div class="x_content">
-                    <form action="" method="post">
+                    <form action="Usuario" method="post">
+                        <input type="hidden" name="id" value="${user.id}">
+                        <input type="hidden" name="funcao" value="alterar">
                         <div class="row">
                             <div class="col-md-6 col-xs-6">
                                 <label>Nome</label>
                             </div>
                             <div class="col-md-6 col-xs-6">
-                                <input type="text" name="nome" placeholder="Nome" class="form-control">
+                                <input type="text" name="nome" placeholder="Nome" class="form-control" value="${user.nome}">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6 col-xs-6">
-                                <label>E-mail</label>
+                                <label>Usuário</label>
                             </div>
                             <div class="col-md-6 col-xs-6">
-                                <input type="email" name="email" placeholder="exemplo@exemplo.com.br" class="form-control">
+                                <input type="text" name="usuario" placeholder="UserName" class="form-control" value="${user.usuario}">
                             </div>
                         </div>
+                            <div class="row">
+                                <div class="col-md-6 col-xs-6">
+                                    <label>Peso</label>
+                                </div>
+                                <div class="col-md-6 col-xs-6">
+                                    <input type="number" name="peso" placeholder="60" class="form-control" value="${user.peso}">
+                                </div>
+                            </div>
                         <div class="row">
                             <div class="col-md-12 col-xs-12">
-                                <input type="submit" value="Calcular" class="btn btn-primary">
+                                <input type="submit" value="Salvar" class="btn btn-primary">
                             </div>
                         </div>
                     </form>

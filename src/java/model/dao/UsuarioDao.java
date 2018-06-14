@@ -35,17 +35,64 @@ public class UsuarioDao {
             ps.setString(2, senha);
             ResultSet rs = ps.executeQuery();
             
-            while(rs.next()){
+            if(rs.next()){
                 usuario = new UsuarioBean();
                 usuario.setId(rs.getInt("id"));
                 usuario.setNome(rs.getString("nome"));
                 usuario.setPeso(rs.getFloat("peso"));
                 usuario.setUsuario(rs.getString("usuario"));
             }
+            rs.close();
+            ps.close();
         } catch (SQLException ex) {
             Logger.getLogger(UsuarioDao.class.getName()).log(Level.SEVERE, null, ex);
         }
         return usuario;
+    }
+    
+    public UsuarioBean buscaUsuarioId(int id){
+        UsuarioBean usuario = null;
+        String sql = "select * from usuario where id = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            
+            if(rs.next()){
+                usuario = new UsuarioBean();
+                usuario.setId(rs.getInt("id"));
+                usuario.setNome(rs.getString("nome"));
+                usuario.setPeso(rs.getFloat("peso"));
+                usuario.setUsuario(rs.getString("usuario"));
+            }
+            rs.close();
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return usuario;
+    }
+    
+    public boolean alterarUsuario(UsuarioBean usuario){
+        boolean retorno;
+        try{
+            String sql = "UPDATE usuario SET nome = ?, usuario = ?, peso = ? WHERE id = ?";
+            System.out.print("aqui");
+            PreparedStatement update = con.prepareStatement(sql);
+            update.setString(1, usuario.getNome());
+            update.setString(2, usuario.getUsuario());
+            update.setFloat(3, usuario.getPeso());
+            update.setInt(4, usuario.getId());
+            
+            update.executeUpdate();
+            update.close();
+            retorno = true;
+            
+        }catch (SQLException ex) {
+            Logger.getLogger(UsuarioDao.class.getName()).log(Level.SEVERE, null, ex);
+            retorno = false;
+        }
+        return retorno;
     }
     
 }

@@ -1,7 +1,12 @@
-
+<%
+    String usuario = (String)session.getAttribute("usuario");
+    String peso = (String)session.getAttribute("id");
+%>
 <%@page import="model.bean.MetaBean"%>
+<%@page import="model.bean.UsuarioBean"%>
 <%@page import="java.util.List"%>
 <%@page import="model.dao.MetaDao"%>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <!-- page content -->
 <div class="right_col" role="main">
     <div class="">
@@ -17,7 +22,7 @@
                             <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                             </li>
                             <li>
-                                <a href="formeditusuario.jsp" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                <a href="Usuario?funcao=editar&id=${user.id}" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
                             </li>
                             <li><a class="close-link"><i class="fa fa-close"></i></a>
                             </li>
@@ -25,15 +30,9 @@
                         <div class="clearfix"></div>
                     </div>
                     <div class="x_content">
-                        Nome:
-                       <%
-                         out.print(session.getAttribute("usuario"));  
-                       %>
+                        Nome:${user.nome}
                        <br>
-                        Peso:
-                        <%
-                         out.print(session.getAttribute("peso"));  
-                       %>
+                        Peso:${user.peso}
 
 
                     </div>

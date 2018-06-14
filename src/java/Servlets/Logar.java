@@ -48,11 +48,12 @@ public class Logar extends HttpServlet {
             // UsuarioDao usuario = new UsuarioDao();
             UsuarioBean usuario = new UsuarioDao().autenticar(login, senha);
             if (usuario != null) {
-                response.sendRedirect("cliente.jsp");
+                //response.sendRedirect("cliente.jsp");
                 session.setAttribute("usuario", usuario.getNome());
                 session.setAttribute("peso", usuario.getPeso());
+                request.setAttribute("user", usuario);
                 session.setMaxInactiveInterval(60 * 5);
-
+                request.getRequestDispatcher("/cliente.jsp").forward(request, response);
             } else {
                 response.sendRedirect("login.jsp");
                 session.invalidate();

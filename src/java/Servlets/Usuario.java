@@ -20,6 +20,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import model.bean.UsuarioBean;
 import model.dao.UsuarioDao;
 
@@ -57,8 +58,8 @@ public class Usuario extends HttpServlet {
         
         switch(funcao){
             case "editar":
-                int id = Integer.parseInt(request.getParameter("id"));
-                request.setAttribute("user", new UsuarioDao().buscaUsuarioId(id));
+                String username = (String)request.getParameter("usuario");
+                request.setAttribute("user", new UsuarioDao().buscaUsuarioUsuario(username));
                 request.getRequestDispatcher("/formeditusuario.jsp").forward(request, response);
                 
         }
@@ -76,7 +77,7 @@ public class Usuario extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String funcao = request.getParameter("funcao");
-        
+        HttpSession session = request.getSession();
         switch(funcao){
             case "alterar":
                 int id = Integer.parseInt(request.getParameter("id"));
@@ -92,6 +93,8 @@ public class Usuario extends HttpServlet {
                 boolean resultado = new UsuarioDao().alterarUsuario(usuarioBean);
                 System.out.print(resultado);
                 if(resultado){
+                    session.setAttribute("usuario", nome);
+                    session.setAttribute("peso", peso);
                     request.setAttribute("messagem","Usuario Editado com sucesso!");
                     request.setAttribute("user", usuarioBean);
                     request.getRequestDispatcher("/cliente.jsp").forward(request, response);

@@ -22,7 +22,7 @@
                             <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                             </li>
                             <li>
-                                <a href="Usuario?funcao=editar&id=${user.id}" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                <a href="Usuario?funcao=editar&usuario=${username}" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
                             </li>
                             <li><a class="close-link"><i class="fa fa-close"></i></a>
                             </li>
@@ -30,9 +30,9 @@
                         <div class="clearfix"></div>
                     </div>
                     <div class="x_content">
-                        Nome:${user.nome}
+                        Nome:${usuario}
                        <br>
-                        Peso:${user.peso}
+                        Peso:${peso}
 
 
                     </div>

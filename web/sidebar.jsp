@@ -3,6 +3,7 @@
     try {
         
         String user = (String) session.getAttribute("usuario");
+        String username = (String) session.getAttribute("username");
         if (user.equals("")) {
             response.sendRedirect("login.jsp");
         }

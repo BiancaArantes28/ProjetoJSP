@@ -17,20 +17,13 @@
                     <form action="Usuario" method="post">
                         <input type="hidden" name="id" value="${user.id}">
                         <input type="hidden" name="funcao" value="alterar">
+                        <input type="hidden" name="usuario" value="${user.usuario}">
                         <div class="row">
                             <div class="col-md-6 col-xs-6">
                                 <label>Nome</label>
                             </div>
                             <div class="col-md-6 col-xs-6">
                                 <input type="text" name="nome" placeholder="Nome" class="form-control" value="${user.nome}">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6 col-xs-6">
-                                <label>Usuário</label>
-                            </div>
-                            <div class="col-md-6 col-xs-6">
-                                <input type="text" name="usuario" placeholder="UserName" class="form-control" value="${user.usuario}">
                             </div>
                         </div>
                             <div class="row">

@@ -35,13 +35,14 @@ public class MetaDao {
         
         try{
              
-             String teste = "UPDATE meta " + "SET tipometa = ?, objetivo = ?" + " WHERE id = ?";
+             String teste = "UPDATE meta " + "SET tipometa = ?, objetivo = ?, status = ?" + " WHERE id = ?";
              
              PreparedStatement update = con.prepareStatement(teste);
              System.out.print("cai aqui");
              update.setString(1,meta.getTipometa());
              update.setFloat(2, meta.getObjetivo());
-             update.setInt(3, meta.getId());
+             update.setString(3,meta.getStatus());
+             update.setInt(4, meta.getId());
              update.executeUpdate();
              update.close();
              retorno = true;
@@ -54,12 +55,14 @@ public class MetaDao {
     public boolean cadastrar(MetaBean meta) {
         boolean retorno;
         Date data_atual = new Date(System.currentTimeMillis());
-        String sql = "insert into meta(tipometa,objetivo,dataini) values(?,?,?)";
+        String status = "em andamento";
+        String sql = "insert into meta(tipometa,objetivo,dataini,status) values(?,?,?,?)";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, meta.getTipometa());
             ps.setFloat(2, meta.getObjetivo());
             ps.setDate(3, data_atual);
+            ps.setString(4, status);
             ps.executeUpdate();
             ps.close();
             retorno = true;

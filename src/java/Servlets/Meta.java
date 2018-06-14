@@ -130,6 +130,7 @@ public class Meta extends HttpServlet {
         if(funcao.equals("alterar")){
             int id = Integer.parseInt(request.getParameter("id"));
             String tipometa = (String)request.getParameter("tipo_meta");
+            String status = (String)request.getParameter("status");
             float pesometa = Float.parseFloat(request.getParameter("peso_meta"));
             
             //MetaBean metaBean = new MetaBean(tipometa, pesometa);
@@ -138,6 +139,7 @@ public class Meta extends HttpServlet {
             metaBean.setId(id);
             metaBean.setTipometa(tipometa);
             metaBean.setObjetivo(pesometa);
+            metaBean.setStatus(status);
             boolean resultado = metaDao.alterarMeta(metaBean);
             if(resultado){
                 request.setAttribute("messagem","Meta Editada com sucesso!");

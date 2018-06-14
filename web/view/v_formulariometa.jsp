@@ -25,7 +25,6 @@
                             </div>
                             <div class="col-md-6 col-xs-6">
                                 <select name="tipo_meta" class="form-control">
-                                    <option value="">(Selecione a meta)</option>
                                     <option value="emagrecer">Emagrecer</option>
                                     <option value="engordar">Engordar</option>
                                 </select>
@@ -37,6 +36,18 @@
                             </div>
                             <div class="col-md-6 col-xs-6">
                                 <input type="number" name="peso_meta" class="form-control" placeholder="Quantos KG você quer perder ou ganhar?" value="${meta.objetivo}">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 col-xs-6">
+                                <label>Status</label>
+                            </div>
+                            <div class="col-md-6 col-xs-6">
+                                    <select name="status" class="form-control">
+                                        <option value="em andamento">Em andamento</option>
+                                        <option value="não concluída">Não concluída</option>
+                                        <option value="concluída">Concluída</option>
+                                    </select>
                             </div>
                         </div>
                         <div class="row">

@@ -50,12 +50,12 @@ public class UsuarioDao {
         return usuario;
     }
     
-    public UsuarioBean buscaUsuarioId(int id){
+    public UsuarioBean buscaUsuarioUsuario(String username){
         UsuarioBean usuario = null;
-        String sql = "select * from usuario where id = ?";
+        String sql = "select * from usuario where usuario = ?";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, id);
+            ps.setString(1, username);
             ResultSet rs = ps.executeQuery();
             
             if(rs.next()){
@@ -76,13 +76,12 @@ public class UsuarioDao {
     public boolean alterarUsuario(UsuarioBean usuario){
         boolean retorno;
         try{
-            String sql = "UPDATE usuario SET nome = ?, usuario = ?, peso = ? WHERE id = ?";
+            String sql = "UPDATE usuario SET nome = ?, peso = ? WHERE usuario = ?";
             System.out.print("aqui");
             PreparedStatement update = con.prepareStatement(sql);
             update.setString(1, usuario.getNome());
-            update.setString(2, usuario.getUsuario());
-            update.setFloat(3, usuario.getPeso());
-            update.setInt(4, usuario.getId());
+            update.setFloat(2, usuario.getPeso());
+            update.setString(3, usuario.getUsuario());
             
             update.executeUpdate();
             update.close();

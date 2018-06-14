@@ -50,6 +50,7 @@ public class Logar extends HttpServlet {
             if (usuario != null) {
                 //response.sendRedirect("cliente.jsp");
                 session.setAttribute("usuario", usuario.getNome());
+                session.setAttribute("username", usuario.getUsuario());
                 session.setAttribute("peso", usuario.getPeso());
                 request.setAttribute("user", usuario);
                 session.setMaxInactiveInterval(60 * 5);

@@ -111,8 +111,16 @@ public class Meta extends HttpServlet {
                 float peso_meta = Float.parseFloat(request.getParameter("peso_meta"));
                 MetaBean metaObject = new MetaBean(tipometa, peso_meta);
                 metaObject.setDataIni(data_atual);
-                meta.cadastrar(metaObject);
-                response.sendRedirect("cliente.jsp");
+                boolean resultado = meta.cadastrar(metaObject);
+                if(resultado){
+                    request.setAttribute("messagem","Meta Adicionada com sucesso!");
+                    request.setAttribute("listaMetas", new MetaDao().buscaMetas());
+                    request.getRequestDispatcher("/listaMetas.jsp").forward(request, response);
+                    
+                }else{
+                    request.setAttribute("messagem","Meta não adicionada!");
+                    request.getRequestDispatcher("/formeditmeta.jsp").forward(request, response);
+                }
             }
         if(funcao.equals("alterar")){
             int id = Integer.parseInt(request.getParameter("id"));

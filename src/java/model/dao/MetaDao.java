@@ -51,7 +51,8 @@ public class MetaDao {
         }
         return retorno;
     }
-    public void cadastrar(MetaBean meta) {
+    public boolean cadastrar(MetaBean meta) {
+        boolean retorno;
         Date data_atual = new Date(System.currentTimeMillis());
         String sql = "insert into meta(tipometa,objetivo,dataini) values(?,?,?)";
         try {
@@ -61,9 +62,12 @@ public class MetaDao {
             ps.setDate(3, data_atual);
             ps.executeUpdate();
             ps.close();
+            retorno = true;
         } catch (SQLException ex) {
             Logger.getLogger(MetaDao.class.getName()).log(Level.SEVERE, null, ex);
+            retorno = false;
         }
+        return retorno;
     }
     
     public boolean excluirMeta(int id){

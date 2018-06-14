@@ -41,7 +41,7 @@
                                 <tr>
                                     <td>${meta.tipometa}</td>
                                     <td>${meta.objetivo}</td>
-                                    <td><a href='Meta?funcao=editar&id=${meta.id}'>Editar</a> | <a href='Meta?funcao=excluir&id=${meta.id}'>Editar</a></td>
+                                    <td><a href='Meta?funcao=editar&id=${meta.id}'>Editar</a> | <a href='Meta?funcao=excluir&id=${meta.id}'>Excluir</a></td>
                                 </tr>
                             </c:forEach>
                             </tbody>
